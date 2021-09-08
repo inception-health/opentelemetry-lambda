@@ -2,12 +2,15 @@ name: "[collector] Publish"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
+    inputs:
+      environment:
+        description: "Environment"
+        required: false
+        default: "sandbox"
 
 jobs:
   publish:
-    environment: sandbox
+    environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     defaults:
       run:
