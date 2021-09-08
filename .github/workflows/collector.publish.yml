@@ -21,5 +21,7 @@ jobs:
           aws-region: us-east-2
       - name: Checkout
         uses: actions/checkout@v2.3.4
+      - name: Replace otel collector config file
+        run: echo "${{ secrets.OTEL_COLLECTOR_CONFIG }}" > config.yaml
       - name: publish layer
         run: make publish-layer
