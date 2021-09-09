@@ -1,16 +1,12 @@
-name: "[collector] Publish"
+name: "[collector] dev publish"
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Environment"
-        required: false
-        default: "sandbox"
+  push:
+    branches: ["dev"]
 
 jobs:
   publish:
-    environment: ${{ github.event.inputs.environment }}
+    environment: dev
     runs-on: ubuntu-latest
     defaults:
       run:
